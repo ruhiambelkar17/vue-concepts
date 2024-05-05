@@ -20,9 +20,14 @@
         <p :style="{color:colorKey}">Vue style binding by passimng color dynamically</p>
         <p :style="styleObj">Vue style binding by passing obj</p> -->
 
-        <h3>two way data binding</h3>
+        <!-- <h3>two way data binding</h3>
         <input type="text" v-model="name" />
-        <p>{{ name }}</p>
+        <p>{{ name }}</p> -->
+        <!-- <h3>Reactivity</h3> -->
+        <!-- <h3>Ref</h3>
+        <input type="text" ref="inp" /> <button @click="checkRef"> submit</button>
+        {{ refIn }} -->
+      
     </div>
 </template>
 
@@ -33,21 +38,30 @@ export default {
         arrData:[Array,String], //multiple types of props
     } ,// props validation
     //mixins:[Counter],
+    mounted(){
+       
+    },
     data(){
         return {
+
             parameterName:"Ruhi", count:100,
             isClass:false,
             arrClass1:'display',
             arrClass2:'textStyle',
             colorKey:'pink',
             styleObj:{'color':'green', 'background-color':'yellow'},
-            name:"ruhi"
+            name:"ruhi",
+            refIn:""
         }
     },
     inject:['newMsg'],
     methods:{
         hitEvent(){
             this.$emit("eventName",this.parameterName);
+        },
+        checkRef(){
+            this.refIn=this.$refs.inp.value;
+            console.log("ref***",this.$refs.inp.value);
         }
     }
 }

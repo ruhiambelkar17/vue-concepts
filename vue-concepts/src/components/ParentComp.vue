@@ -14,7 +14,10 @@
         <!-- <h3>Dynamic Component</h3>
             <button @click="cmpNm='LoaderComp'">Loader</button>
             <component :is="cmpNm" /> -->
+        <h3>computed vs watcher</h3>
+        <p>{{ fullName }}</p>
     </div>
+
 </template>
 
 <script>
@@ -52,7 +55,14 @@ export default ({
         arr:"HEllo",
         newName:"",
         msg:"Welcome to vue!",
-        cmpNm:"ChildComp"
+        cmpNm:"ChildComp",
+        name:"Ruhi",
+        surName:"A"
+    }
+   },
+   computed:{
+    fullName(){
+        return this.name + this.surName;
     }
    },
    provide(){
