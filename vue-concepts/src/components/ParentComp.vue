@@ -14,8 +14,13 @@
         <!-- <h3>Dynamic Component</h3>
             <button @click="cmpNm='LoaderComp'">Loader</button>
             <component :is="cmpNm" /> -->
-        <h3>computed vs watcher</h3>
-        <p>{{ fullName }}</p>
+        <!-- <h3>computed vs watcher</h3>
+        <p>From computed:{{ fullName }}</p>
+        <input type="text" v-model="name" onChange="watchName"/>
+        <p>From watcher: {{ fullName1 }}</p> -->
+        <h3>Fetch</h3>
+        <button @click="getDatawithFetch">Fetch Data</button>
+        <p>{{ apiDataWithPage }}</p>
     </div>
 
 </template>
@@ -57,12 +62,19 @@ export default ({
         msg:"Welcome to vue!",
         cmpNm:"ChildComp",
         name:"Ruhi",
-        surName:"A"
+        surName:"A",
+        fullName1:"",
+        apiDataWithPage:[]
     }
    },
    computed:{
     fullName(){
         return this.name + this.surName;
+    }
+   },
+   watch:{
+    name(){
+        this.fullName1= this.name+this.surName;        
     }
    },
    provide(){
@@ -74,6 +86,11 @@ export default ({
    {
      getChildData (parameterName) {
     this.newName=parameterName;
+   },
+   async getDatawithFetch(){
+    let resp=await fetch("http://localhost:1337/api/html-questions");
+    this.apiDataWithPage=await resp.json();
+    console.log("api data****",this.apiDataWithPage)
    }
    }
 })
