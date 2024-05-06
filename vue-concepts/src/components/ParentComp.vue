@@ -29,15 +29,20 @@
     <!-- <ApiDemoComp></ApiDemoComp> -->
     <h1>Slots</h1>
         <hr />
-    <ChildSlotComp >
+    <!-- <ChildSlotComp >
         <template #default>
             <p :name="slotprop"> HEllo {{ name }}</p>            
         </template>
         <template #info="{age}">
             <p >Age {{age}}</p>
         </template>
-    </ChildSlotComp>
+    </ChildSlotComp> -->
    <router-link to="/loader"> <a>Loader</a></router-link>
+   <hr />
+   <h3>vuex</h3>
+   <p>count: {{ $store.state.counter }} and  square: {{ $store.getters.squareCounter }}</p>
+   <button @click="$store.commit('incrementCounter',2)">Inc</button>
+   <button @click="$store.dispatch('incrementCounter')">Dispact action</button>
 
   </div>
 </template>
@@ -45,7 +50,7 @@
 <script>
 import ChildComp from "./ChildComp.vue";
 //import ApiDemoComp from "./ApiDemoComp.vue";
-import ChildSlotComp from "./ChildSlotComp.vue";
+//import ChildSlotComp from "./ChildSlotComp.vue";
 //import {defineAsyncComponent} from "vue";
 //import LoaderComp from "./LoaderComp.vue"
 // const focus={
@@ -54,6 +59,8 @@ import ChildSlotComp from "./ChildSlotComp.vue";
 //     }
 
 // }
+
+
 
 export default {
   // directives:{
@@ -72,7 +79,7 @@ export default {
   //     })
   // },
   components: {
-    ChildComp,ChildSlotComp
+    ChildComp,
   },
   name:'ParentComp',
   data() {

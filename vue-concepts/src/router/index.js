@@ -10,6 +10,10 @@ const router=createRouter({
     {path:"/loader",
     name:'LoaderComp',
     component:()=>import('../components/LoaderComp.vue') 
+},
+{path:"/loader/:name",
+    name:'ApiDemoComp',
+    component:()=>import('../components/ApiDemoComp.vue') 
 }
     ]
 })
