@@ -39,16 +39,18 @@
     </ChildSlotComp> -->
    <router-link to="/loader"> <a>Loader</a></router-link>
    <hr />
-   <h3>vuex</h3>
+   <!-- <h3>vuex</h3>
    <p>count: {{ $store.state.counter }} and  square: {{ $store.getters.squareCounter }}</p>
    <button @click="$store.commit('incrementCounter',2)">Inc</button>
-   <button @click="$store.dispatch('incrementCounter')">Dispact action</button>
-
+   <button @click="$store.dispatch('incrementCounter')">Dispact action</button> -->
+    <h3>Pinia</h3>
+    <p>Counnt:{{ useStore.count }}</p>
   </div>
 </template>
 
 <script>
 import ChildComp from "./ChildComp.vue";
+import {PiniaStore } from "../piniaStore/index"
 //import ApiDemoComp from "./ApiDemoComp.vue";
 //import ChildSlotComp from "./ChildSlotComp.vue";
 //import {defineAsyncComponent} from "vue";
@@ -93,6 +95,7 @@ export default {
       fullName1: "",
       apiDataWithPage: [],
       id:"",
+      useStore:PiniaStore
     };
   },
   computed: {
